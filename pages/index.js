@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import Head from 'next/head'
 import AppLayout from '../components/AppLayout'
 // import styles from '../styles/Home.module.css'
@@ -5,25 +6,51 @@ import {colors} from '../styles/theme'
 import Button from '../components/Button'
 import GitHub from '../components/Icons/Github'
 
+import {loginWithGitHub, onAuthStateChanged} from '../firebase/client'
+
 export default function Home() {
+
+  const [user, setUser] = useState(undefined)
+  
+  useEffect( () => {
+    onAuthStateChanged(setUser)
+  }, [])
+
+  const handleClick = () => {
+    loginWithGitHub().then(setUser)
+    .catch(err => {
+      console.log(err)
+    })
+  }
   return (
-    <div>
+    <>
       <Head>
-        <title>Devter 🐦</title>
+        <title>Blurtter 🐦</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <AppLayout>
         <section>  
           <img src="/logoBlur.svg" alt="logo Blur"/>
-          <h1>blurtter</h1>
+          <h1>Blurtter</h1>
           <h2>Talk about development with developers 👩🏻‍💻🧑🏻‍💻</h2>
+
           <div>
-            <Button>
-              <GitHub fill='#fff' width={24} heigth={24} />
-              Login with Github
-            </Button>
+            {
+              user === null && 
+                <Button onClick={handleClick}>
+                  <GitHub fill='#fff' width={24} heigth={24} />
+                  Login with Github
+                </Button> 
+            }
+            {
+              user && user.avatar && <div>
+                <img src={user.avatar} alt="user" />
+                <strong>{user.username}</strong>
+              </div>
+            }
           </div>
+
         </section>
       </AppLayout>
 
@@ -47,6 +74,8 @@ export default function Home() {
             color: ${colors.primary};
             font-size: 21px;
             margin: 0;
+            width: 75%;
+            text-align: center;
           }
 
           section {
@@ -68,6 +97,6 @@ export default function Home() {
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer> */}
-    </div>
+    </>
   )
 }
