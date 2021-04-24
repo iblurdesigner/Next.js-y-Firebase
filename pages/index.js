@@ -2,7 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import AppLayout from "../components/AppLayout";
-// devit
+
+import { colors } from "../styles/theme";
 
 export default function Home() {
   const router = useRouter();
@@ -15,15 +16,35 @@ export default function Home() {
       </Head>
 
       <AppLayout>
-        <h1>
-          <a href="https://nextjs.org">devter</a>
-        </h1>
+        <section>
+          <img src="/logoBlur.svg" alt="logo blur" />
+          <h1>blurtter</h1>
+          <h2>Talk about development with developers 👩🏻‍💻🧑🏻‍💻</h2>
+        </section>
       </AppLayout>
 
       <style jsx>{`
+        section {
+          display: grid;
+          height: 100%;
+          place-content: center;
+          place-items: center;
+        }
+
+        img {
+          width: 180px;
+        }
+
         h1 {
-          text-align: center;
-          font-size: 48px;
+          color: ${colors.secondary};
+          font-weight: 800;
+          margin-bottom: 16px;
+        }
+
+        h2 {
+          color: ${colors.primary};
+          font-size: 21px;
+          margin: 0;
         }
       `}</style>
     </>
