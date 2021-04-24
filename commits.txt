@@ -1,3 +1,9 @@
+commit 45a0b7bbee2baee639c3a09c2137613b0d453011
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Sat Apr 24 16:37:10 2021 -0500
+
+    login con github, trayendo datos del usuario, fase 1
+
 commit 1d5e3dd2efb29f4dd6078ec73a85e0b6b7b244a9
 Author: iblurdesigner <nevomen@gmail.com>
 Date:   Sat Apr 24 11:50:12 2021 -0500

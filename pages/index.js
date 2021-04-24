@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import AppLayout from "../components/AppLayout";
@@ -6,18 +6,18 @@ import { colors } from "../styles/theme";
 import Button from "../components/Button";
 import GitHub from "../components/Icons/Github";
 
-import { loginWithGitHub } from "../firebase/client";
+import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
+
+  useEffect(() => {
+    onAuthStateChanged(setUser);
+  }, []);
 
   const handleClick = () => {
     loginWithGitHub()
-      .then((user) => {
-        const { avatar, username, company } = user;
-        setUser(user);
-        console.log(user);
-      })
+      .then(setUser)
       .catch((err) => {
         console.log(err);
       });
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>devter 🐦</title>
+        <title>blurtter 🐦</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -37,11 +37,20 @@ export default function Home() {
           <img src="/logoBlur.svg" alt="logo blur" />
           <h1>blurtter</h1>
           <h2>Talk about development with developers 👩🏻‍💻🧑🏻‍💻</h2>
+
           <div>
-            <Button onClick={handleClick}>
-              <GitHub fill="#fff" width={24} heigth={24} />
-              Login with Github
-            </Button>
+            {user === null && (
+              <Button onClick={handleClick}>
+                <GitHub fill="#fff" width={24} heigth={24} />
+                Login with Github
+              </Button>
+            )}
+            {user && user.avatar && (
+              <div>
+                <img src={user.avatar} />
+                <strong>{user.username}</strong>
+              </div>
+            )}
           </div>
         </section>
       </AppLayout>
