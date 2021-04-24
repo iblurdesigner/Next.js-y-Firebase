@@ -1,0 +1,11 @@
+commit 1d5e3dd2efb29f4dd6078ec73a85e0b6b7b244a9
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Sat Apr 24 11:50:12 2021 -0500
+
+    pantalla de inicio sin boton
+
+commit 8d08d4197aa6b80a0e08ba3ff31317e8d5d6d26e
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Sat Apr 24 10:46:15 2021 -0500
+
+    Base del proyecto
