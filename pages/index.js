@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import AppLayout from "../components/AppLayout";
-import { colors } from "../styles/theme";
-import Button from "../components/Button";
-import GitHub from "../components/Icons/Github";
+import { useEffect, useState } from "react"
+import Head from "next/head"
 
-import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
+import Avatar from "components/Avatar"
+import AppLayout from "components/AppLayout"
+import Button from "components/Button"
+import GitHub from "components/Icons/Github"
+
+import { colors } from "styles/theme"
+
+import { loginWithGitHub, onAuthStateChanged } from "firebase/client"
 
 export default function Home() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(undefined)
 
   useEffect(() => {
-    onAuthStateChanged(setUser);
-  }, []);
+    onAuthStateChanged(setUser)
+  }, [])
 
   const handleClick = () => {
     loginWithGitHub()
       .then(setUser)
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
-  const router = useRouter();
+  // const router = useRouter()
 
   return (
     <>
@@ -36,7 +38,10 @@ export default function Home() {
         <section>
           <img src="/logoBlur.svg" alt="logo blur" />
           <h1>blurtter</h1>
-          <h2>Talk about development with developers 👩🏻‍💻🧑🏻‍💻</h2>
+          <h2>
+            Talk about development <br />
+            with developers 👩🏻‍💻🧑🏻‍💻
+          </h2>
 
           <div>
             {user === null && (
@@ -47,8 +52,12 @@ export default function Home() {
             )}
             {user && user.avatar && (
               <div>
-                <img src={user.avatar} />
-                <strong>{user.username}</strong>
+                <Avatar
+                  alt={user.username}
+                  src={user.avatar}
+                  text={user.username}
+                  withText
+                />
               </div>
             )}
           </div>
@@ -84,5 +93,5 @@ export default function Home() {
         }
       `}</style>
     </>
-  );
+  )
 }
