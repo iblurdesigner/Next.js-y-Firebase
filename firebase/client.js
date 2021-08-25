@@ -60,15 +60,10 @@ export const fetchLatesDevits = () => {
         const id = doc.id
         const { createAt } = data
 
-        const date = new Date(createAt.seconds * 1000)
-        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
-          date
-        )
-
         return {
           ...data,
           id,
-          createAt: normalizedCreatedAt,
+          createAt: +createAt.toDate(),
         }
       })
     })
