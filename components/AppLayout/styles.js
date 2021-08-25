@@ -1,9 +1,9 @@
-import css from "styled-jsx/css";
+import css from "styled-jsx/css"
 
-import { breakpoints, colors, fonts } from "../../styles/theme";
-import { addOpacityToColor } from "../../styles/utils";
+import { breakpoints, colors, fonts } from "../../styles/theme"
+import { addOpacityToColor } from "../../styles/utils"
 
-const backgroundColor = addOpacityToColor(colors.primary, 0.3);
+const backgroundColor = addOpacityToColor(colors.primary, 0.3)
 
 export const globalStyles = css.global`
   html,
@@ -14,13 +14,19 @@ export const globalStyles = css.global`
     background-size: 50px 50px;
     padding: 0;
     margin: 0;
+    overflow: hidden;
     font-family: ${fonts.base};
   }
 
   * {
     box-sizing: border-box;
   }
-`;
+
+  textarea,
+  input {
+    font-family: ${fonts.base};
+  }
+`
 
 export default css`
   div {
@@ -33,6 +39,7 @@ export default css`
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
     height: 100%;
     width: 100%;
   }
@@ -43,4 +50,4 @@ export default css`
       width: ${breakpoints.mobile};
     }
   }
-`;
+`
