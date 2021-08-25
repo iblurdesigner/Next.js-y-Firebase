@@ -54,14 +54,21 @@ export const fetchLatesDevits = () => {
   return db
     .collection("devits")
     .get()
-    .then((snapshot) => {
-      return snapshot.docs.map((doc) => {
+    .then(({ docs }) => {
+      return docs.map((doc) => {
         const data = doc.data()
         const id = doc.id
+        const { createAt } = data
+
+        const date = new Date(createAt.seconds * 1000)
+        const normalizedCreatedAt = new Intl.DateTimeFormat("es-ES").format(
+          date
+        )
 
         return {
-          id,
           ...data,
+          id,
+          createAt: normalizedCreatedAt,
         }
       })
     })

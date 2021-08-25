@@ -1,7 +1,6 @@
 import Avatar from "components/Avatar"
 
-export default function Devit({ avatar, createdAt, userName, content, id }) {
-  console.log(createdAt)
+export default function Devit({ avatar, createAt, userName, content, id }) {
   return (
     <>
       <article>
@@ -9,8 +8,10 @@ export default function Devit({ avatar, createdAt, userName, content, id }) {
           <Avatar alt={userName} src={avatar} />
         </div>
         <section>
-          <strong>{userName}</strong>
-          <date>{createdAt}</date>
+          <header>
+            <strong>{userName}</strong>
+            <small> • {createAt}</small>
+          </header>
           <p>{content}</p>
         </section>
       </article>
@@ -30,6 +31,10 @@ export default function Devit({ avatar, createdAt, userName, content, id }) {
           p {
             line-height: 1.3125;
             margin: 0;
+          }
+          small {
+            color: #555;
+            font-size: 12px;
           }
         `}
       </style>
