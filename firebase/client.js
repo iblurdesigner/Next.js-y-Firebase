@@ -53,6 +53,7 @@ export const addDevit = ({ avatar, content, userId, userName }) => {
 export const fetchLatesDevits = () => {
   return db
     .collection("devits")
+    .orderBy("createAt", "desc")
     .get()
     .then(({ docs }) => {
       return docs.map((doc) => {
