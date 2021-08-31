@@ -1,4 +1,3 @@
-import AppLayout from "components/AppLayout"
 import Button from "components/Button"
 import useUser from "hooks/useUser"
 import { useEffect, useState } from "react"
@@ -95,39 +94,38 @@ export default function ComposeTweet() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Crear un Devit / Devter</title>
-        </Head>
-        <section className="form-container">
-          {/* Hay que evaluar primero que haya un usuario para pedir su avatar */}
-          {user && (
-            <section className="avatar-container">
-              <Avatar src={user.avatar} />
-              {console.log(<Avatar />)}
+      <Head>
+        <title>Crear un Devit / Devter</title>
+      </Head>
+      <section className="form-container">
+        {/* Hay que evaluar primero que haya un usuario para pedir su avatar */}
+        {user && (
+          <section className="avatar-container">
+            <Avatar src={user.avatar} />
+            {console.log(<Avatar />)}
+          </section>
+        )}
+        <form onSubmit={handleSubmit}>
+          <textarea
+            onChange={handleChange}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            placeholder="Qué está pasando?"
+            value={message}
+          ></textarea>
+          {imgURL && (
+            <section className="remove-img">
+              <button onClick={() => setImageURL(null)}>X</button>
+              <img src={imgURL} />
             </section>
           )}
-          <form onSubmit={handleSubmit}>
-            <textarea
-              onChange={handleChange}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              placeholder="Qué está pasando?"
-              value={message}
-            ></textarea>
-            {imgURL && (
-              <section className="remove-img">
-                <button onClick={() => setImageURL(null)}>X</button>
-                <img src={imgURL} />
-              </section>
-            )}
-            <div>
-              <Button disabled={isButtonDisabled}>Devittear</Button>
-            </div>
-          </form>
-        </section>
-      </AppLayout>
+          <div>
+            <Button disabled={isButtonDisabled}>Devittear</Button>
+          </div>
+        </form>
+      </section>
+
       <style jsx>
         {`
           form {
