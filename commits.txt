@@ -1,3 +1,69 @@
+commit 5affdafeafb141800c4bf45638335e2df1a9baa9
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Tue Aug 31 16:59:26 2021 -0500
+
+    navegando por rutas dinamics para acceder al tweet Parte 1
+
+commit 10ee9a4dcfa12147c4dd376d273925ff99a26542
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Tue Aug 31 12:11:02 2021 -0500
+
+    App layout en _app
+
+commit faeee34bb73228df548b53977f02c20faa2954ea
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Mon Aug 30 16:19:42 2021 -0500
+
+    mejorando el Compoise tweet, SUBIENDO una imagen y MOSTRANDOLA EN EL TIMELINE
+
+commit b9e47bcca6db88e4c42c2f2e1bed3511d307c347
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Fri Aug 27 16:29:06 2021 -0500
+
+    CSS para el nav
+
+commit cac7bbc1dca40f2389cef5c8ee6c872dcdc98196
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Wed Aug 25 16:12:21 2021 -0500
+
+    Probando el RelativeTimeFormat para no usar el Moment.JS
+
+commit 3dd49d0bedd14c61333c1263ffb52086b8dc742f
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Wed Aug 25 15:21:16 2021 -0500
+
+    Hemos extraido la fecha del tweet
+
+commit 4318d80cd6be1238cd880bd3cdcd63fab47d5373
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Wed Aug 25 14:39:50 2021 -0500
+
+    hasta aqui funciona bien el obtener los tweets publicados
+
+commit f457aaa8e8305731e1c5bf6afea6819e2996fe33
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Wed Aug 25 11:26:46 2021 -0500
+
+    cambiso en el home redirect al tweet
+
+commit 7d24561ac5957a67be0f841da92aa7aa5cc205a5
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Mon Aug 16 16:11:39 2021 -0500
+
+    pagina home parte 1
+
+commit 9a2af091ecc79af04955d235740cb866fc7303ff
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Mon Aug 9 18:38:05 2021 -0500
+
+    Login fixed
+
+commit 0bf95de0e145cd22139b3a64d57ac8a112a3a536
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Sat Apr 24 17:43:01 2021 -0500
+
+    funcionalidad de login terminada
+
 commit 45a0b7bbee2baee639c3a09c2137613b0d453011
 Author: iblurdesigner <nevomen@gmail.com>
 Date:   Sat Apr 24 16:37:10 2021 -0500

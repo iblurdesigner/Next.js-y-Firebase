@@ -10,9 +10,16 @@ export default (request, response) => {
     .get()
     .then((doc) => {
       const data = doc.data()
-      response.json(data)
+      const id = doc.id
+      const { createAt } = data
+
+      response.json({
+        ...data,
+        id,
+        createAt: +createAt.toDate(),
+      })
     })
     .catch(() => {
-      response.status(400).end()
+      response.status(404).end()
     })
 }
