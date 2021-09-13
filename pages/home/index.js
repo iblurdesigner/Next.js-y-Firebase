@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Link from "next/dist/client/link"
 import Devit from "components/Devit"
 import useUser from "hooks/useUser"
-import { fetchLatesDevits } from "firebase/client"
+import { listenLatestDevist } from "firebase/client"
 import Create from "components/Icons/Create"
 import Home from "components/Icons/Home"
 import Search from "components/Icons/Search"
@@ -13,12 +13,15 @@ export default function HomePage() {
   const [timeline, setTimeline] = useState([])
   const user = useUser()
 
+  // de esta forma recibimos el listener para que haga la actualizacion en tiempo real
   useEffect(() => {
-    user &&
-      // fetch("/api/statuses/home_timeline")
-      //   .then((res) => res.json())
-      //   .then(setTimeline)
-      fetchLatesDevits().then(setTimeline)
+    let unsubscribe
+
+    if (user) {
+      unsubscribe = listenLatestDevist(setTimeline)
+    }
+
+    return () => unsubscribe && unsubscribe()
   }, [user])
 
   return (

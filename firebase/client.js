@@ -51,25 +51,39 @@ export const addDevit = ({ avatar, content, img, userId, userName }) => {
   })
 }
 
-export const fetchLatesDevits = () => {
+const mapDevitFromFirebaseToDevitObject = (doc) => {
+  const data = doc.data()
+  const id = doc.id
+  const { createAt } = data
+
+  return {
+    ...data,
+    id,
+    createAt: +createAt.toDate(),
+  }
+}
+
+// este callback nos va a ayudar a hacer la actualzacion en tiempo real
+export const listenLatestDevist = (callback) => {
   return db
     .collection("devits")
     .orderBy("createAt", "desc")
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data()
-        const id = doc.id
-        const { createAt } = data
-
-        return {
-          ...data,
-          id,
-          createAt: +createAt.toDate(),
-        }
-      })
+    .limit(20)
+    .onSnapshot(({ docs }) => {
+      const newDevits = docs.map(mapDevitFromFirebaseToDevitObject)
+      callback(newDevits)
     })
 }
+
+// export const fetchLatesDevits = () => {
+//   return db
+//     .collection("devits")
+//     .orderBy("createAt", "desc")
+//     .get()
+//     .then(({ docs }) => {
+//       return docs.map(mapDevitFromFirebaseToDevitObject)
+//     })
+// }
 
 export const uploadImage = (file) => {
   const ref = firebase.storage().ref(`images/${file.name}`)
