@@ -1,3 +1,15 @@
+commit 1476336f65e49ca77d4510e4c9a2be0ae24f537b
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Sun Sep 12 21:54:28 2021 -0500
+
+    Mejoras progresivas
+
+commit 1ff05070015939a271ff9275c0b68c076b745e95
+Author: iblurdesigner <nevomen@gmail.com>
+Date:   Fri Sep 10 22:04:14 2021 -0500
+
+    fix useTimeAgo, getServerSideProps
+
 commit 5affdafeafb141800c4bf45638335e2df1a9baa9
 Author: iblurdesigner <nevomen@gmail.com>
 Date:   Tue Aug 31 16:59:26 2021 -0500
