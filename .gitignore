@@ -33,3 +33,4 @@ yarn-error.log*
 
 # fibase private key
 /firebase/firebase-keys.json
+.vercel
